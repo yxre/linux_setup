@@ -1,0 +1,4 @@
+#!/bin/bash
+
+TASKS=$(task | wc -l)
+python -c "print(str(${TASKS}-5) + ' tasks  ')"

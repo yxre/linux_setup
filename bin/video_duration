@@ -1,0 +1,15 @@
+#!/bin/bash
+
+help() {
+	echo 'usage: video_duration $FILE_NAME'
+	exit 5
+}
+
+FILENAME=$1
+if [[ ! -e "$FILENAME" ]]; then
+	echo "Unable to find file: $FILENAME"
+	help
+fi
+	
+
+ffmpeg -i "$FILENAME" 2>&1 | grep "Duration"

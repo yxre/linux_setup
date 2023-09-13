@@ -1,0 +1,6 @@
+#!/bin/bash
+
+PEM_KEY_PATH=~/.ssh
+SSH_ROUTE=user@ip
+ssh -v -N -D 9090 -i $PEM_KEY_PATH $SSH_ROUTE
+

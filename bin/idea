@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bash ~/w/lib/idea-IU-223.7571.182/bin/idea.sh &> /dev/null &

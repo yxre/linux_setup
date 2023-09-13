@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "enable to make a service run"
+echo "disable to stop a service from running"
+echo "status <service> to check the status"
+echo "reload <service> to reload the configuration"
+echo "restart <service> to restart the service"
+echo "stop <service> to stop"

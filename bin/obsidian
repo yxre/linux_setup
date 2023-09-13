@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/lib/Obsidian-1.4.12.AppImage &> /dev/null &

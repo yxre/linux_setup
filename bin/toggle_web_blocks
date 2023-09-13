@@ -1,0 +1,44 @@
+#!/bin/bash
+
+
+
+AWK_COMMAND='
+BEGIN { toggle = 0 }
+
+/###WEB_BLOCK_LIST/ { 
+    print
+    toggle = !toggle 
+    next
+}
+
+toggle && !/^#.*/ { 
+    print "#" $0 
+    next
+}
+
+toggle && /^#.*/ {
+    sub(/^#/, "")
+    print 
+    next
+}
+
+{ print }
+'
+
+sudo awk -i inplace "$AWK_COMMAND" /etc/hosts
+
+FF_OPEN=$(ps -ef | grep firefox | wc -l)
+
+if [ "${FF_OPEN}" -gt "1" ]; then
+   pkill -15 firefox
+   firefox &> /dev/null &
+   disown $!
+fi
+
+CH_OPEN=$(ps -ef | grep chromium | wc -l)
+
+if [ "${CH_OPEN}" -gt "1" ]; then
+   pkill -15 chromium
+   chromium-browser &> /dev/null &
+   disown $!
+fi

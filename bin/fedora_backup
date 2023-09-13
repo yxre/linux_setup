@@ -1,0 +1,15 @@
+#!/bin/bash
+
+mkdir -p ~/bin/metadata
+
+dconf dump / > ~/bin/metadata/dconf-settings.ini
+
+flatpak list | cut -f 2 | grep -vwE '(org\.freedesktop|org\.gnome\.Platform)' > ~/bin/metadata/flatpak_packages
+
+sudo dnf repoquery --userinstalled | cut -d ":" -f 1 | sed 's/-[0-9]$//g' | grep -vwE '(org\.freedesktop|org\.gnome\.Platform)'  > ~/bin/metadata/dnf
+
+grep -v -x -f ./dnf_backup_blacklist ./metadata/dnf > ~/bin/metadata/dnf_bak
+rm ~/bin/metadata/dnf
+mv ~/bin/metadata/dnf_bak ~/bin/metadata/dnf
+
+cp -R /etc/yum.repos.d ~/bin/metadata/yum.repos.d

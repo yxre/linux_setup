@@ -1,0 +1,3 @@
+#!/bin/bash
+
+export PATH=~/repo/depot_tools:$PATH

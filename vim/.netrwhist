@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/leland/repo/biz-ai-ext/smp-ext/src'
+let g:netrw_dirhist_1='/home/leland/repo/www.lelandbarton.com'
+let g:netrw_dirhist_0='/home/leland/repo/hacker_helpers'
+let g:netrw_dirhist_9='/home/leland/repo/hacker_helpers/code_files/postgres'
+let g:netrw_dirhist_8='/var/lib/pgsql'
+let g:netrw_dirhist_7='/home/leland/repo/scraping_helpers'
+let g:netrw_dirhist_6='/var/opt'
+let g:netrw_dirhist_5='/home/leland/repo/bash_examples'
+let g:netrw_dirhist_4='/home/leland/repo/c_cpp_learn/src'
+let g:netrw_dirhist_3='/etc/NetworkManager'

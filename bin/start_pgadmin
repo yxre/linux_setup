@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /usr/lib/pgadmin4
+sudo python3 pgAdmin4.py

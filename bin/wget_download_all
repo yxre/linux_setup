@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wget -p -k -H $1

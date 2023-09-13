@@ -1,0 +1,22 @@
+
+let mapleader = " "
+
+
+noremap <leader>h :tabp<CR>
+noremap <leader>l :tabn<CR>
+noremap <leader>t :tabnew<CR>
+noremap <leader>q :tabclose<CR>
+noremap <leader>f :action ReformatCode<CR>
+noremap <leader>c :action GotoClass<CR>
+noremap <leader>e :action GotoNextError<CR>
+noremap <leader>r :action RefactoringMenu<CR>
+noremap <leader>s :action ChooseRunConfiguration<CR>
+noremap <leader>b :action GotoDeclaration<CR>
+
+
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
