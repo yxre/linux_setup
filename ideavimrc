@@ -1,5 +1,15 @@
 
+
+#Set idea.it.internal=true in the idea.properties file
+# ideavim has a way to do notification for each action you do
 let mapleader = " "
+set ignorecase
+set clipboard+=unnamed
+set surround
+set highlightedyank
+set easymotion
+set notimeout
+set which-key
 
 
 noremap <leader>h :tabp<CR>
@@ -7,11 +17,13 @@ noremap <leader>l :tabn<CR>
 noremap <leader>t :tabnew<CR>
 noremap <leader>q :tabclose<CR>
 noremap <leader>f :action ReformatCode<CR>
-noremap <leader>c :action GotoClass<CR>
+noremap <leader>c "+yy
 noremap <leader>e :action GotoNextError<CR>
 noremap <leader>r :action RefactoringMenu<CR>
 noremap <leader>s :action ChooseRunConfiguration<CR>
 noremap <leader>b :action GotoDeclaration<CR>
+
+noremap U <action>$Redo
 
 
 nnoremap [q :action PreviousOccurence<cr>
@@ -21,4 +33,68 @@ nnoremap ]m :action MethodDown<cr>
 nnoremap [c :action VcsShowPrevChangeMarker<cr>
 nnoremap ]c :action VcsShowNextChangeMarker<cr>
 
-set easymotion
+let g:WhichKeyDesc_display = "<leader>d Display options"
+
+let g:WhichKeyDesc_zen_mode = "<leader>dz Toggle Zen mode"
+let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free mode"
+let g:WhichKeyDesc_fullscreen = "<leader>df Toggle full screen"
+
+
+inoremap jk <Esc>
+
+" Pane navigation
+nnoremap <A-h> <C-w>h
+nnoremap <A-l> <C-w>l
+nnoremap <A-k> <C-w>k
+nnoremap <A-j> <C-w>j
+
+" Jump between methods
+nnoremap [[ <Action>(MethodUp)
+nnoremap ]] <Action>(MethodDown)
+
+" Jump around with easymotion
+map <leader>j <Plug>(easymotion-s)
+
+" Folding
+map <leader>zc :action CollapseAllRegions<CR>
+map <leader>zo :action ExpandAllRegions<CR>
+
+
+" Window splits
+map <leader>wv <Action>(SplitVertically)
+map <leader>ws <Action>(SplitHorizontally)
+map <leader>wu <Action>(Unsplit)
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+
+" Display options
+map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>dz <action>(ToggleZenMode)
+map <leader>df <action>(ToggleFullScreen)
+
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+" Go to code
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gy <Action>(GotoTypeDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gu <Action>(ShowUsages)
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gf <Action>(Back)
+nmap <leader>gb <Action>(Forward)
+
+map <leader>x <Action>(HideActiveWindow)
+map <leader>ai <Action>(ActivateAIAssistantToolWindow)
+
+
+map <leader>dl <Action>(StepOver)
+map <leader>dj <Action>(StepInto)
+map <leader>dk <Action>(StepOut)
+map <leader>nb <Action>(NewScratchBuffer)
+
+map <leader>rr <Action>(Rerun)

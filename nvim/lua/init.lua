@@ -32,6 +32,8 @@ luasnip.config.set_config({ -- Setting LuaSnip config
   -- Use Tab (or some other key if you prefer) to trigger visual selection
   store_selection_keys = "<C-Tab>",
 })
+--local cmp = require('cmp')
+--[[
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -63,7 +65,7 @@ cmp.setup({
     { name = 'buffer' },
   })
 })
-
+]]
 
 
 
@@ -98,8 +100,6 @@ require("obsidian").setup({
 })
 
 
--- Load custom treesitter grammar for org filetype
-require('orgmode').setup_ts_grammar()
 
 -- Treesitter configuration
 require('nvim-treesitter.configs').setup {

@@ -22,6 +22,9 @@ let mapleader = " "
 noremap <leader>h :tabp<CR>
 noremap <leader>l :tabn<CR>
 noremap <leader>t :tabnew<CR>
+noremap <leader>o :CtrlP<CR>
+noremap <leader>cc "+y
+noremap <leader>cp "+p
 
 " nnoremap <leader>P :NERDTreeFocus<CR>
 " nnoremap <leader>i :NERDTree<CR>
@@ -39,7 +42,7 @@ nnoremap <leader>by <cmd>ObsidianYesterday<cr>
 nnoremap <leader>bo <cmd>ObsidianQuickSwitch<cr>
 nnoremap <leader>bf <cmd>ObsidianFollowLink<cr>
 nnoremap <leader>bd <cmd>ObsidianBacklinks<cr>
-:vnoremap <leader>cc :w !xclip -selection clipboard<CR>
+vnoremap <leader>cc :w !xclip -selection clipboard<CR>
 
 
 autocmd FileType org setlocal noexpandtab tabstop=4 shiftwidth=4 noautoindent

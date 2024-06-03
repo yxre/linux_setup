@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+cd ~/Documents/moneythumb/repo/cloud
+
+cd src/main/resources/node
+
+yarn install
+yarn run test:unit-ci
+yarn run build
+
+cd -
+
+./bin/build_artifact
