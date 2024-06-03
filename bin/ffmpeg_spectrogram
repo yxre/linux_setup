@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ffmpeg -i $1 -lavfi showspectrumpic=s=800x400:mode=separate spectrogram.png

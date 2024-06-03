@@ -23,16 +23,24 @@ nnn.setup({
 })
 
 local cmp = require('cmp')
+local luasnip = require('luasnip')
+luasnip.config.set_config({ -- Setting LuaSnip config
 
+  -- Enable autotriggered snippets
+  enable_autosnippets = true,
+
+  -- Use Tab (or some other key if you prefer) to trigger visual selection
+  store_selection_keys = "<C-Tab>",
+})
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
-    --expand = function(args)
+    expand = function(args)
       -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body) -- For `luasnip` users.
       -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    -- end,
+    end,
   },
   window = {
     -- completion = cmp.config.window.bordered(),
@@ -41,14 +49,14 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<Tab>'] = cmp.mapping.complete(),
+    ['<leader-tab>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'vsnip' }, -- For vsnip users.
+    { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
   }, {
@@ -88,3 +96,55 @@ require("obsidian").setup({
   -- see below for full list of options 
   finder = "telescope.nvim",
 })
+
+
+-- Load custom treesitter grammar for org filetype
+require('orgmode').setup_ts_grammar()
+
+-- Treesitter configuration
+require('nvim-treesitter.configs').setup {
+  -- If TS highlights are not enabled at all, or disabled via `disable` prop,
+  -- highlighting will fallback to default Vim syntax highlighting
+  highlight = {
+    enable = true,
+    -- Required for spellcheck, some LaTex highlights and
+    -- code block highlights that do not have ts grammar
+    additional_vim_regex_highlighting = {'org'},
+  },
+  ensure_installed = {'org'}, -- Or run :TSUpdate org
+}
+
+require('orgmode').setup({
+  org_agenda_files = {'~/Documents/drive/org_agenda/*'},
+  org_default_notes_file = '~/Documents/drive/main.org',
+})
+
+--lsp keybindings
+local lsp_keybindings = function()
+    print("Attaching LSP keybindings")
+    vim.api.nvim_set_keymap('n','<Leader>gD',[[:lua vim.lsp.buf.declaration()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>gd',[[:lua vim.lsp.buf.definition()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>K',[[:lua vim.lsp.buf.hover()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>gr',[[:lua vim.lsp.buf.references()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>gs',[[:lua vim.lsp.buf.signature_help()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>gi',[[:lua vim.lsp.buf.implementation()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>gt',[[:lua vim.lsp.buf.type_definition()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>gw',[[:lua vim.lsp.buf.document_symbol()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>gW',[[:lua vim.lsp.buf.workspace_symbol()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>af',[[:lua vim.lsp.buf.code_action()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>ee',[[:lua vim.lsp.util.show_line_diagnostics()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>ar',[[:lua vim.lsp.buf.rename()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>=',[[:lua vim.lsp.buf.formatting()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>ic',[[:lua vim.lsp.buf.incoming_calls()<cr>]],{})
+    vim.api.nvim_set_keymap('n','<Leader>oc',[[:lua vim.lsp.buf.outgoing_calls()<cr>]],{})
+end
+
+--autocomplete setup
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local lsp = require('lspconfig')
+lsp.clangd.setup{
+    on_attach=lsp_keybindings,
+    capabilities = capabilites,   
+}
+

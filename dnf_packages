@@ -1,0 +1,196 @@
+
+# Sec
+nmap
+wireshark
+wireguard-tools
+telnet
+traceroute
+vpnc
+osquery
+strace
+
+# CLI utilities
+zsh
+kitty
+terminator
+eza
+zoxide
+busybox
+tmux
+bat
+ncdu
+rsync
+vim-enhanced
+neovim
+xclip
+
+## CLI Infrequent Utilities
+ImageMagick
+ffmpeg
+libxml2
+perl-Image-ExifTool
+
+## CLI Network
+wget
+curl
+ftp
+
+## CLI System Monitor
+btop
+atop
+
+## CLI File Managers
+nnn
+ranger
+vifm
+
+## CLI Personal Apps
+hledger
+calcurse
+task
+yt-dlp
+yt-dlp-zsh-completion
+
+# Linux Desktop
+xrandr
+vlc
+transmission
+chromium
+spacefm
+gparted
+cheese
+gimp
+keepassxc
+
+
+# Programming
+cloc
+gawk
+golang
+qemu
+ctags
+ripgrep
+fzf
+jq
+hugo
+ninja-build
+make
+cmake
+protobuf-compiler
+nginx
+awscli2
+
+## Version Control
+subversion
+mercurial
+git
+tig
+
+## Database
+postgresql-server
+postgresql-upgrade
+sqlite
+sqlite-libs
+
+## Linux Build Tools
+meson
+automake
+autoconf
+conan
+
+## Linux Common Dependencies For Building
+bison
+m4
+ncurses
+
+## C
+gcc
+clang
+
+## C++ 
+llvm
+gcc-c++
+
+## Binary Tooling
+valgrind
+conan
+gdb
+binutils
+clang-tools-extra
+
+## C Packages
+ncurses-devel
+
+### C++ Packages
+fmt-devel
+boost
+boost-devel
+postgresql-devel
+libpgxx-devel
+spdlog-devel
+openssl-devel
+librdkafka-devel
+libpqxx-devel
+libcurl-devel
+libstdc++-devel
+python-devel
+wireshark-devel
+ncurses-c++-libs
+
+## Java
+java-latest-openjdk-devel
+java-latest-openjdk-headless
+java-11-openjdk-devel
+maven
+
+
+## Rust
+cargo
+rust
+
+
+
+#font
+gnome-tweaks 
+google-noto-sans-cjk-fonts
+google-noto-sans-mono-cjk-vf-fonts
+google-noto-sans-mono-fonts
+google-noto-sans-cjk-vf-fonts
+google-noto-serif-cjk-fonts
+google-noto-serif-cjk-vf-fonts
+
+#fcitx
+fcitx5 
+fcitx5-configtool 
+fcitx5-hangul 
+fcitx5-gtk2 
+fcitx5-gtk3 
+fcitx5-gtk4 
+fcitx5-hangul 
+fcitx5-libthai 
+fcitx5-mozc 
+fcitx5-qt 
+fcitx5-qt5 
+fcitx5-qt6
+
+# Desktop
+
+## Gnome Setup
+gnome-extensions-app
+
+## i3 Setup
+i3
+nitrogren
+picom
+xfce4-settings
+polybar
+rofi
+
+
+# Randoms
+
+## Anki - will allow recording in-app
+lame
+
+# Maybes..
+# protonvpn-stable-release

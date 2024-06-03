@@ -1,0 +1,23 @@
+#!/bin/bash
+
+LINK_TO_SAVE="$1"
+FILENAME=$(filename "${LINK_TO_SAVE}")
+
+
+mv "${LINK_TO_SAVE}" "~/repo/linux_setup/${FILENAME}"
+ln -s "~/repo/linux_setup/${FILENAME}" "${LINK_TO_SAVE}"
+
+CMD="ln -s '~/repo/linux_setup/${FILENAME}' '${LINK_TO_SAVE}'"
+
+
+echo "Save ${CMD}"
+echo "${CMD}" >> setup.sh
+
+# I need an absolute path to move it to
+# or just assume everything is within user folder
+
+# move file to dotfiles
+# create link to original location
+# add it to permanent registry
+
+

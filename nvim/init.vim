@@ -11,15 +11,17 @@ set laststatus=2
 set wildmenu
 set number
 set exrc
+set clipboard+=unnamedplus
 
 
 
 let mapleader = " "
 
+
+
 noremap <leader>h :tabp<CR>
 noremap <leader>l :tabn<CR>
 noremap <leader>t :tabnew<CR>
-noremap <leader>o :CtrlP<CR>
 
 " nnoremap <leader>P :NERDTreeFocus<CR>
 " nnoremap <leader>i :NERDTree<CR>
@@ -31,9 +33,13 @@ nnoremap <F6> :!ctags -R .
 
 nnoremap <leader>tf <cmd>Telescope find_files<cr>
 nnoremap <leader>tg <cmd>Telescope live_grep<cr>
-nnoremap <leader>ot <cmd>ObsidianToday<cr>
-nnoremap <leader>oy <cmd>ObsidianYesterday<cr>
-nnoremap <leader>oo <cmd>ObsidianQuickSwitch<cr>
-nnoremap <leader>of <cmd>ObsidianFollowLink<cr>
-nnoremap <leader>od <cmd>ObsidianBacklinks<cr>
 
+nnoremap <leader>bt <cmd>ObsidianToday<cr>
+nnoremap <leader>by <cmd>ObsidianYesterday<cr>
+nnoremap <leader>bo <cmd>ObsidianQuickSwitch<cr>
+nnoremap <leader>bf <cmd>ObsidianFollowLink<cr>
+nnoremap <leader>bd <cmd>ObsidianBacklinks<cr>
+:vnoremap <leader>cc :w !xclip -selection clipboard<CR>
+
+
+autocmd FileType org setlocal noexpandtab tabstop=4 shiftwidth=4 noautoindent

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ps -eo pid,ppid,cmd,%mem,%cpu,rss --sort=-%mem
+
+

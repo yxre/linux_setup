@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "It has been this many days since the last toggle"
+echo "scale=2; ( $(date +%s) - $(stat -c %Y /etc/hosts) ) / 86400" | bc 
 
 
 AWK_COMMAND='
@@ -42,3 +44,4 @@ if [ "${CH_OPEN}" -gt "1" ]; then
    chromium-browser &> /dev/null &
    disown $!
 fi
+
