@@ -1,0 +1,23 @@
+#!/usr/bin/awk -f
+
+{
+    # Trim leading and trailing whitespace
+    gsub(/^[\t ]+|[\t ]+$/, "", $0);
+
+    # Skip lines if they are empty or start with #
+    if ($0 == "" || $0 ~ /^#/) {
+        next;
+    }
+
+    # Concatenate non-empty, non-comment lines with a space
+    if (length(result) == 0) {
+        result = $0;  # First valid line
+    } else {
+        result = result " " $0;  # Subsequent lines
+    }
+}
+
+END {
+    # Print the concatenated result
+    print result;
+}

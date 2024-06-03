@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+
+cd ~/repo/biz-ddd/js_cli
+pnpm run timer "$@"
