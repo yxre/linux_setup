@@ -20,6 +20,8 @@ noremap <leader>h :tabp<CR>
 noremap <leader>l :tabn<CR>
 noremap <leader>t :tabnew<CR>
 noremap <leader>o :CtrlP<CR>
+noremap <leader>cc "+y
+noremap <leader>cp "+p
 
 " nnoremap <leader>P :NERDTreeFocus<CR>
 " nnoremap <leader>i :NERDTree<CR>

@@ -22,8 +22,8 @@ nnn.setup({
   --windownav = "<C-l>"
 })
 
-local cmp = require('cmp')
-
+--local cmp = require('cmp')
+--[[
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -55,7 +55,7 @@ cmp.setup({
     { name = 'buffer' },
   })
 })
-
+]]
 
 
 

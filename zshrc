@@ -73,7 +73,20 @@ alias "e=nvim"
 alias "ws=python -m http.server"
 alias "c=xclip -selection clipboard"
 alias "v=xclip -selection clipboard -o"
+alias "mt_j=nvim ~/Documents/mt_journal.md"
 
 
 LS_COLORS=$LS_COLORS:"di=00;35:"
 export LS_COLORS
+
+. ~/.nvm/nvm.sh
+nvm use default > /dev/null
+
+
+# pnpm
+export PNPM_HOME="/home/leland/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
