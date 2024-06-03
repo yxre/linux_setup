@@ -6,7 +6,7 @@ wireguard-tools
 telnet
 traceroute
 vpnc
-osquery
+#osquery
 strace
 
 # CLI utilities
@@ -126,7 +126,7 @@ fmt-devel
 boost
 boost-devel
 postgresql-devel
-libpgxx-devel
+libpqxx-devel
 spdlog-devel
 openssl-devel
 librdkafka-devel
@@ -180,7 +180,7 @@ gnome-extensions-app
 
 ## i3 Setup
 i3
-nitrogren
+nitrogen
 picom
 xfce4-settings
 polybar
