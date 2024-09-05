@@ -5,6 +5,11 @@ get_git_dirty() {
   git diff --quiet || echo '*'
 }
 
+
+WORKMODE="0"
+WORKMODENAME=
+WORKMODEPATH=
+
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '%F{red}*'   # display this when there are unstaged changes
@@ -90,3 +95,34 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+
+setup_workmode() {
+	if [[ "${WORKMODE}" = 1 ]]; then
+		echo "Start a new session to start using workmode"
+		return
+	else
+		export WORKMODE=1
+		NAME=$1
+		if [[ "${NAME}" = "" ]]; then
+			NAME=$RANDOM
+		fi
+		export WORKMODENAME="$NAME"
+		export WORKMODEPATH="$HOME/repo/work_${WORKMODENAME}"
+		mkdir -p "${WORKMODEPATH}"
+		cd "${WORKMODEPATH}"
+		export PS1="${PS1} %F{magenta} [work=${WORKMODENAME}] %f $ "
+	fi
+}
+
+preexec() {
+	if [[ "${WORKMODE}" = "1" ]]; then
+		echo "$1" >> "${WORKMODEPATH}/script.sh"
+	fi
+}
+
+for file in ~/repo/linux_setup/local_helpers/*.sh; do
+	if [ -f "$file" ]; then
+		source "$file"
+	fi
+done

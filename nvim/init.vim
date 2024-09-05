@@ -46,3 +46,7 @@ vnoremap <leader>cc :w !xclip -selection clipboard<CR>
 
 
 autocmd FileType org setlocal noexpandtab tabstop=4 shiftwidth=4 noautoindent
+
+command! -nargs=1 Brun execute 'tabnew' | enew | r ! <your shell cmd>
+
+" Marks m<CHAR> `<CHAR>

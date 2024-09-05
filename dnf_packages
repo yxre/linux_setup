@@ -6,6 +6,7 @@ wireguard-tools
 telnet
 traceroute
 vpnc
+binwalk
 #osquery
 strace
 
@@ -133,6 +134,7 @@ librdkafka-devel
 libpqxx-devel
 libcurl-devel
 libstdc++-devel
+libxcb-devel
 python-devel
 wireshark-devel
 ncurses-c++-libs
@@ -148,6 +150,9 @@ maven
 cargo
 rust
 
+## Python
+pipx
+
 
 
 #font
@@ -158,6 +163,7 @@ google-noto-sans-mono-fonts
 google-noto-sans-cjk-vf-fonts
 google-noto-serif-cjk-fonts
 google-noto-serif-cjk-vf-fonts
+mozilla-fira-mono-fonts
 
 #fcitx
 fcitx5 

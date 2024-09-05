@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cargo install youtube-tui --no-default-features -F 'halfblock' -F 'clipboard' 
