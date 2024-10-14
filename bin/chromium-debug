@@ -1,3 +1,0 @@
-#!/bin/bash
-
-chromium-browser --remote-debugging-port=16661

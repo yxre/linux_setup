@@ -1,4 +1,0 @@
-#!/bin/bash
-
-
-sudo dnf install $(concat_packages ~/repo/linux_setup/dnf_packages)

@@ -9,6 +9,7 @@ get_git_dirty() {
 WORKMODE="0"
 WORKMODENAME=
 WORKMODEPATH=
+NON_WORKMODE_PS1=""
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
@@ -40,7 +41,7 @@ unset custom_config_file
 
 export EDITOR='vim'
 
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/bin:$HOME/repo/linux_setup_private/bin:$HOME/.cargo/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -97,7 +98,7 @@ esac
 # pnpm end
 
 
-setup_workmode() {
+start_workmode() {
 	if [[ "${WORKMODE}" = 1 ]]; then
 		echo "Start a new session to start using workmode"
 		return
@@ -111,18 +112,71 @@ setup_workmode() {
 		export WORKMODEPATH="$HOME/repo/work_${WORKMODENAME}"
 		mkdir -p "${WORKMODEPATH}"
 		cd "${WORKMODEPATH}"
+		export NON_WORKMODE_PS1="${PS1}"
 		export PS1="${PS1} %F{magenta} [work=${WORKMODENAME}] %f $ "
 	fi
 }
 
+stop_workmode() {
+	if [[ "${WORKMODE}" = 0 ]]; then
+		echo "workmode is not active"
+		return
+	else
+		export WORKMODE=0
+		export WORKMODENAME=""
+		export WORKMODEPATH=""
+		export PS1="${NON_WORKMODE_PS1}"
+	fi
+}
 preexec() {
 	if [[ "${WORKMODE}" = "1" ]]; then
 		echo "$1" >> "${WORKMODEPATH}/script.sh"
 	fi
 }
 
-for file in ~/repo/linux_setup/local_helpers/*.sh; do
-	if [ -f "$file" ]; then
-		source "$file"
+
+# Created by `pipx` on 2024-09-07 08:10:40
+export PATH="$PATH:/home/leland/.local/bin"
+bindkey -v
+
+eval "$(zoxide init zsh)"
+
+alias cd="z"
+
+alias ccal="calcurse -D ~/repo/linux_setup_private/calendar"
+
+PP="$HOME/.zsh/cli_package/zshrc"
+. "${PP}"
+
+
+function yx_load_cli_package() {
+	PACKAGE_NAME="$1"
+	CLI_PACKAGE_PATH="$2"
+	if [[ -z "${CLI_PACKAGE_PATH}" ]]; then
+		CLI_PACKAGE_PATH="${HOME}/.zsh/cli_package/${PACKAGE_NAME}"
 	fi
-done
+	TARGET_BIN="${CLI_PACKAGE_PATH}/bin"
+
+	TARGET_ZSHRC="${CLI_PACKAGE_PATH}/zshrc"
+	# add scripts to path
+	if [[ -d "${TARGET_BIN}" ]]; then 
+		echo "Adding Path: ${TARGET_BIN}"
+		export PATH="$PATH:${TARGET_BIN}"
+	else
+		echo "Bin does not exist: ${TARGET_BIN}"
+	fi
+	if [[ -f "${TARGET_ZSHRC}" ]]; then
+		echo "Loading: ${TARGET_ZSHRC}"
+		. "${TARGET_ZSHRC}"
+	else
+		echo "Zshrc does not exist: ${TARGET_ZSHRC}"
+	fi
+	
+}
+
+
+if [[ -f "${HOME}/.zsh/cli_package/autoload.sh" ]]; then
+	. "${HOME}/.zsh/cli_package/autoload.sh"
+else
+	echo "Skipping autoload.sh"
+fi

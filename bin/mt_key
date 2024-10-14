@@ -1,3 +1,0 @@
-#!/bin/bash
-
-aws codeartifact get-authorization-token --domain moneythumb-com --query authorizationToken --output text

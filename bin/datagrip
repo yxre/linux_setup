@@ -1,3 +1,0 @@
-#!/bin/bash
-
-bash ~/w/lib/DataGrip-2022.3.1/bin/datagrip.sh &> /dev/null &
