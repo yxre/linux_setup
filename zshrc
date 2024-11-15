@@ -41,7 +41,7 @@ unset custom_config_file
 
 export EDITOR='vim'
 
-export PATH="$PATH:$HOME/bin:$HOME/repo/linux_setup_private/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/bin:$HOME/repo/linux_setup_private/bin:$HOME/.cargo/bin:$HOME/.local/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

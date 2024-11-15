@@ -1,16 +1,17 @@
 #!/bin/bash
 
-mkdir ~/repo
-cd ~/repo
-git clone https://github.com/yxre/linux_setup
+mkdir -p $HOME/repo
+cd $HOME/repo
+#git clone https://github.com/yxre/linux_setup
 
 cd linux_setup
-mkdir -p ~/.config
+mkdir -p $HOME/.config
 
-ln -s "~/repo/linux_setup/vimrc" "~/.vimrc"
-ln -s "~/repo/linux_setup/bin" "~/bin"
-ln -s "~/repo/linux_setup/ideavimrc" "~/.ideavimrc"
-ln -s "~/repo/linux_setup/zshenv" "~/.zshenv"
-ln -s "~/repo/linux_setup/kitty" "~/.config/kitty"
-ln -s "~/repo/linux_setup/zshrc" "~/.zshrc"
-ln -s "~/repo/linux_setup/zsh" "~/.zsh"
+ln -s "$HOME/repo/linux_setup/vimrc" "$HOME/.vimrc"
+ln -s "$HOME/repo/linux_setup/bin" "$HOME/bin"
+ln -s "$HOME/repo/linux_setup/ideavimrc" "$HOME/.ideavimrc"
+ln -s "$HOME/repo/linux_setup/zshenv" "$HOME/.zshenv"
+ln -s "$HOME/repo/linux_setup/kitty" "$HOME/.config/kitty"
+ln -s "$HOME/repo/linux_setup/zshrc" "$HOME/.zshrc"
+ln -s "$HOME/repo/linux_setup/zsh" "$HOME/.zsh"
+ln -s "$HOME/repo/linux_setup/vim" "$HOME/.vim"
