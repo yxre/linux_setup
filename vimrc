@@ -29,3 +29,4 @@ nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <F5> :make
 nnoremap <F6> :!ctags -R .
 
+autocmd FileType lua setlocal tabstop=2 shiftwidth=2
